@@ -1,0 +1,154 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "augment-context-engine": {
+      "type": "local",
+      "command": ["auggie", "--mcp", "--mcp-auto-workspace"],
+      "enabled": true
+    }
+  },
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "codellama:34b": {
+          "name": "CodeLlama 34B (local)",
+          "limit": {
+            "context": 16384,
+            "output": 4096
+          }
+        },
+        "qwen2.5-coder:14b": {
+          "name": "Qwen2.5 Coder 14B (local)",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "qwen2.5-coder:7b": {
+          "name": "Qwen2.5 Coder 7B (local)",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "starcoder2:15b": {
+          "name": "StarCoder2 15B (local)",
+          "limit": {
+            "context": 16384,
+            "output": 4096
+          }
+        },
+        "starcoder2:7b": {
+          "name": "StarCoder2 7B (local)",
+          "limit": {
+            "context": 16384,
+            "output": 4096
+          }
+        },
+        "mistral": {
+          "name": "Mistral 7B (local)",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "phi3:medium": {
+          "name": "Phi-3 Medium (local)",
+          "limit": {
+            "context": 131072,
+            "output": 4096
+          }
+        }
+      }
+    }
+  },
+  "model": "ollama/qwen2.5-coder:14b",
+  "small_model": "ollama/qwen2.5-coder:7b",
+  "default_agent": "build",
+  "autoupdate": true,
+  "snapshot": true,
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
+  },
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      "dist/**",
+      ".git/**",
+      ".venv/**",
+      "__pycache__/**",
+      "*.pyc",
+      "*.log",
+      "coverage/**",
+      "build/**",
+      "target/**",
+      "*.o",
+      "*.so",
+      ".DS_Store",
+      "Thumbs.db"
+    ]
+  },
+  "instructions": [
+    "/Volumes/External/opencode-project/wso2-api-guidelines.md",
+    "/Volumes/External/opencode-project/opencode.md",
+    "/Volumes/External/opencode-project/agency-agents-main/strategy/nexus-strategy.md",
+    "/Volumes/External/opencode-project/agency-agents-main/strategy/QUICKSTART.md",
+    "/Volumes/External/opencode-project/agency-agents-main/strategy/playbooks/**/*.md",
+    "/Volumes/External/opencode-project/agency-agents-main/strategy/runbooks/**/*.md",
+    "/Volumes/External/opencode-project/agency-agents-main/strategy/coordination/**/*.md",
+    "/Volumes/External/opencode-project/agency-agents-main/examples/**/*.md",
+    "/Volumes/External/opencode-project/impeccable-main/README.md",
+    "/Volumes/External/opencode-project/impeccable-main/AGENTS.md",
+    "/Volumes/External/opencode-project/promptfoo-main/AGENTS.md",
+    "/Volumes/External/opencode-project/MiroFish-main/README.md",
+    "/Volumes/External/opencode-project/MiroFish-main/README-EN.md",
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "docs/**/*.md",
+    ".cursor/rules/*.md",
+    ".claude/CLAUDE.md"
+  ],
+  "agent": {
+    "code-reviewer": {
+      "description": "Reviews code for best practices, security, and performance",
+      "model": "anthropic/claude-sonnet-4-5",
+      "prompt": "You are a code reviewer. Focus on security, performance, maintainability, and WSO2 API patterns.",
+      "tools": { "write": false, "edit": false, "bash": false }
+    },
+    "architect": {
+      "description": "Designs system architecture and technical plans",
+      "model": "anthropic/claude-sonnet-4-5",
+      "prompt": "You are a software architect. Design scalable systems using WSO2 API Manager for all API integrations.",
+      "tools": { "write": false, "edit": false }
+    },
+    "security-engineer": {
+      "description": "Security analysis, threat detection, vulnerability assessment",
+      "model": "anthropic/claude-sonnet-4-5",
+      "prompt": "You are a security engineer. Analyze code for vulnerabilities, review authentication flows, and ensure secure API patterns via WSO2."
+    },
+    "test-planner": {
+      "description": "Plans and reviews test strategies",
+      "model": "anthropic/claude-sonnet-4-5",
+      "prompt": "You are a testing strategist. Design comprehensive test plans covering unit, integration, and E2E testing.",
+      "tools": { "write": false, "edit": false }
+    },
+    "quick-coder": {
+      "description": "Fast local coding for small edits and completions",
+      "model": "ollama/qwen2.5-coder:7b",
+      "prompt": "You are a fast coding assistant. Make quick, targeted code changes."
+    },
+    "deep-coder": {
+      "description": "Deep coding tasks using larger local model",
+      "model": "ollama/qwen2.5-coder:14b",
+      "prompt": "You are a coding specialist. Handle complex implementations and refactoring."
+    }
+  },
+  "plugin": []
+}
