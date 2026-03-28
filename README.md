@@ -19,6 +19,19 @@ Done. Now open your coding tool and start using agents.
 
 ---
 
+## Example: What It Looks Like
+
+Here's YWIMC in action inside Claude Code — installing agents, running tasks, and orchestrating real work:
+
+| | |
+|---|---|
+| ![Install](assets/example-install.png) | ![Setup](assets/example-setup.png) |
+| **Installing agents** — one command sets up everything | **Setup & status** — deployment manifests and config |
+| ![Agents](assets/example-agents.png) | ![Tasks](assets/example-tasks.png) |
+| **Running agents** — mention any agent by name | **Real tasks** — agents working on architecture, code, and more |
+
+---
+
 ## What You Get
 
 | What | Count | What it does |
